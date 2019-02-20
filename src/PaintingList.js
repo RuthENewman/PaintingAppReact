@@ -7,15 +7,20 @@ class PaintingList extends Component {
     paintings: paintings
   }
 
+  getFilteredPaintings = () =>
+    this.state.paintings
+      .filter(painting => painting.title.includes(this.props.filter))
+
   render () {
-  return <ul>
-  {
-    this.state.paintings.filter(painting => painting.title.includes(this.props.filter)).map(painting =>
-      <Painting key={painting.id} painting={painting} />
+
+    return <ul>
+    {
+      this.getFilteredPaintings().map(painting =>
+        <Painting key={painting.id} painting={painting} />
     )
   }
-  </ul>
-}
+      </ul>
+    }
 }
 
 export default PaintingList
