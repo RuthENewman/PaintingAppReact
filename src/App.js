@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import PaintingList from './PaintingList';
 import Navbar from './Navbar';
+import Search from './Search';
 
 class App extends Component {
-  constructor() {
-    super()
-    this.greet = this.greet.bind(this)
-  }
-  greet() {
-    console.log('I am', this);
-  }
+   state = {
+     filter: ''
+   }
+
+   updateFilter = newFilter => {
+     this.setState({ filter: newFilter }, () => console.log(this.state))
+   }
 
   render() {
-    this.greet();
     return (
       <div className="App">
         <Navbar
@@ -21,7 +21,8 @@ class App extends Component {
           subtitle="Isn't this cool?"
           icon='react'
         />
-        <PaintingList greet={this.greet}/>
+        <Search updateFilter={this.updateFilter}/>
+        <PaintingList filter={this.state.filter}/>
       </div>
           )
   }
