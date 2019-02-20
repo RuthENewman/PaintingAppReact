@@ -16,7 +16,11 @@ class PaintingList extends Component {
     return <ul>
     {
       this.getFilteredPaintings().map(painting =>
-        <Painting key={painting.id} painting={painting} />
+        <Painting
+          selectPainting={this.props.selectPainting}
+          key={painting.id}
+          painting={painting}
+        />
     )
   }
       </ul>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Painting = props =>
       <li>
-        <div className="painting">
+        <div onClick={() => props.selectPainting(props.painting)} className="painting">
           <img src={props.painting.image} alt={props.painting.title}/>
           <p>Title: {props.painting.title}</p>
           <p>
